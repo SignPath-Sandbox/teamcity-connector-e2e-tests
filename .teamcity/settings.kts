@@ -13,6 +13,11 @@ project {
       cleanCheckout = true
     }
 
+    val artifactPath = "BuildOutput.zip"
+
+    // publish the signed artifact
+    artifactRules = artifactPath
+
     steps {
       // build step
       script {
@@ -23,9 +28,6 @@ project {
 
       // sign step
       step {
-        val inputArtifactPath = "BuildOutput"
-        val outputArtifactPath = "BuildOutput.zip"
-
         type = "SignPathRunner"
         param("connectorUrl", "https://teamcity-connector-stable.customersimulation.int.signpath.io")
         param("organizationId", "9ff791fc-c563-44e3-ab8c-86a33c910bbe")
@@ -34,15 +36,12 @@ project {
         param("signingPolicySlug", "test-signing")
         param("artifactConfigurationSlug", "initial")
 
-        param("inputArtifactPath", inputArtifactPath)
-        param("outputArtifactPath", outputArtifactPath)
+        param("inputArtifactPath", artifactPath)
+        param("outputArtifactPath", artifactPath)
         param("waitForCompletion", "true")
       }
     }
-
-    // publish the signed artifact
-    artifactRules = "BuildOutput.signed.zip"
-
+    
     // max build duration 5 mins
     failureConditions {
       executionTimeoutMin = 5
