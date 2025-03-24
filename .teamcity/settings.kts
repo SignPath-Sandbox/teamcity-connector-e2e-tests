@@ -31,7 +31,7 @@ project {
         type = "SignPathRunner"
         param("connectorUrl", "https://teamcity-connector-stable.customersimulation.int.signpath.io")
         param("organizationId", "9ff791fc-c563-44e3-ab8c-86a33c910bbe")
-        param("apiToken", "xy")
+        param("apiToken", "credentialsJSON:4ba5812a-ffd4-41a7-829c-15adcebda622")
         param("projectSlug", "TeamCity_Connector_E2E_Tests")
         param("signingPolicySlug", "test-signing")
         param("artifactConfigurationSlug", "initial")
