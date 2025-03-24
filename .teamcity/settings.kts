@@ -17,7 +17,7 @@ project {
       // build step
       script {
         name = "Create artifact"
-        scriptContent = "build.sh"
+        scriptContent = "./build.sh"
         formatStderrAsError = true
       }
 
