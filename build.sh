@@ -10,6 +10,7 @@ rm -f $package
 
 mkdir $buildOutputDirectory
 
-./generate-artifact.sh "$buildOutputDirectory/file" 100
+# TODO: SIGN-7676 increase size to 100MB. This is currently set to 1 for fast development
+./generate-artifact.sh "$buildOutputDirectory/file" 1
 
 (cd $buildOutputDirectory && zip -r ../$package .)
