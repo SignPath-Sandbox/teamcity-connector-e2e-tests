@@ -31,7 +31,7 @@ project {
         type = "SignPathRunner"
         param("connectorUrl", "https://teamcity-connector-stable.customersimulation.int.signpath.io")
         param("organizationId", "9ff791fc-c563-44e3-ab8c-86a33c910bbe")
-        param("apiToken", "credentialsJSON:a03ec855-c92c-4f33-8877-b8ab1726afd4")
+        param("apiToken", "xy")
         param("projectSlug", "TeamCity_Connector_E2E_Tests")
         param("signingPolicySlug", "test-signing")
         param("artifactConfigurationSlug", "initial")
@@ -41,7 +41,7 @@ project {
         param("waitForCompletion", "true")
       }
     }
-    
+
     // max build duration 5 mins
     failureConditions {
       executionTimeoutMin = 5
