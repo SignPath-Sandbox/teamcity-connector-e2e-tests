@@ -10,6 +10,6 @@ rm -f $package
 
 mkdir $buildOutputDirectory
 
-./generate-artifact.sh "$buildOutputDirectory/file" 1000
+./generate-artifact.sh "$buildOutputDirectory/file" 100
 
 (cd $buildOutputDirectory && zip -r ../$package .)
