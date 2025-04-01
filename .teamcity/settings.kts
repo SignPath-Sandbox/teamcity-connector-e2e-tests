@@ -44,7 +44,7 @@ project {
 
     // max build duration 5 mins
     failureConditions {
-      executionTimeoutMin = 20
+      executionTimeoutMin = 5
     }
   }
 }
