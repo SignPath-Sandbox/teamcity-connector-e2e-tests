@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fileSizeMB=100
+fileSizeMB=1
 
 buildOutputDirectory="BuildOutput"
 package="BuildOutput.zip"
