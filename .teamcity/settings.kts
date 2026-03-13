@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.SignPathSubmitSigningRequestStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.buildSteps.signPathSubmitSigningRequest
 
 version = "2025.11"
 
@@ -15,6 +17,7 @@ project {
 
   params {
     text("connectorUrl", "https://teamcity-connector-stable.customersimulation.int.signpath.io")
+    password("apiToken", "credentialsJSON:4ba5812a-ffd4-41a7-829c-15adcebda622")
   }
 
     val artifactPath = "BuildOutput.zip"
@@ -30,19 +33,17 @@ project {
         formatStderrAsError = true
       }
 
-      // sign step
-      step {
-        type = "SignPathRunner"
-        param("connectorUrl", "%connectorUrl%")
-        param("organizationId", "9ff791fc-c563-44e3-ab8c-86a33c910bbe")
-        param("apiToken", "credentialsJSON:4ba5812a-ffd4-41a7-829c-15adcebda622")
-        param("projectSlug", "TeamCity_Connector_E2E_Tests")
-        param("signingPolicySlug", "test-signing")
-        param("artifactConfigurationSlug", "initial")
+      signPathSubmitSigningRequest {
+        connectorUrl = "%connectorUrl"
+        organizationId = "9ff791fc-c563-44e3-ab8c-86a33c910bbe"
+        apiToken = "%apiToken%"
+        projectSlug = "e2e-teamcity-test-project"
+        signingPolicySlug = "test-signing"
+        artifactConfigurationSlug = "initial"
 
-        param("inputArtifactPath", artifactPath)
-        param("outputArtifactPath", artifactPath)
-        param("waitForCompletion", "true")
+        inputArtifactPath = artifactPath
+        outputArtifactPath = artifactPath
+        waitForCompletion = true
       }
     }
 
