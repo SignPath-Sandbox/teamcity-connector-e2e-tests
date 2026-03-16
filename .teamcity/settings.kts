@@ -34,7 +34,7 @@ project {
       }
 
       signPathSubmitSigningRequest {
-        connectorUrl = "%connectorUrl"
+        connectorUrl = "%connectorUrl%"
         organizationId = "9ff791fc-c563-44e3-ab8c-86a33c910bbe"
         apiToken = "%apiToken%"
         projectSlug = "e2e-teamcity-test-project"
